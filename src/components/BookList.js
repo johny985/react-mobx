@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { List, ListItem } from "@mui/material";
+import { List, ListItem, Container } from "@mui/material";
 import BookListItem from "./BookListItem";
 
 class BookList extends Component {
@@ -7,13 +7,17 @@ class BookList extends Component {
     const { books } = this.props;
 
     return (
-      <List>
-        <ListItem>
-          <BookListItem book={books[0]}></BookListItem>
-        </ListItem>
-        <ListItem>item-02</ListItem>
-        <ListItem>item-03</ListItem>
-      </List>
+      <Container maxWidth="sm">
+        <List>
+          {books.map((el) => {
+            return (
+              <ListItem>
+                <BookListItem book={el}></BookListItem>
+              </ListItem>
+            );
+          })}
+        </List>
+      </Container>
     );
   }
 }
